@@ -1,4 +1,4 @@
-package com.todolist.model;
+package com.todolist.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,21 +10,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table (name = "users")
-public class User {
+@Table (name = "tasks")
+public class Task {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private String email;
-	private String firstName;
-	private String lastName;
-	private String password;
-	
+	private int taskId;
+	private String name;
+	private String dueDate;
+	private int priority;
+	private String username ;
 
-}
+	}
+	

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.todolist.model.User;
+import com.todolist.models.User;
 
 @Repository
 public interface UserDao extends JpaRepository<User, Integer> {
