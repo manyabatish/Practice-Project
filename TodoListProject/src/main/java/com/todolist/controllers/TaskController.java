@@ -43,8 +43,14 @@ public class TaskController {
 	}
 
 	@GetMapping("/tasksList")
-	public List<?> getUserTasks(Authentication authentication) {
+	public List<Task> getTasksByUser(Authentication authentication) {
 		return taskServiceImpl.findByUsername(authentication.getName());
 	}
+	
+	@GetMapping("/tasks")
+	public List<Task> getTasks() {
+		return taskServiceImpl.getTasks();
+	}
+	
 
 }

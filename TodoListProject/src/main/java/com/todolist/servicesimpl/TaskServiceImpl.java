@@ -31,9 +31,13 @@ public class TaskServiceImpl implements TaskService {
 		taskDao.deleteById(id);
 	}
 
-	public List<?> findByUsername(String username) {
+	public List<Task> findByUsername(String username) {
 		return taskDao.findByUsername(username);
 	}
-	
+
+	public List<Task> getTasks() {
+		return taskDao.findAll();
+	}
+
 
 }

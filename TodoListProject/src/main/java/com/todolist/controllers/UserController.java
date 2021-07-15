@@ -2,6 +2,7 @@ package com.todolist.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,9 +23,8 @@ public class UserController {
 	@PostMapping("/signUp")
 	public User registerNewUserAccount(@RequestBody User userDetails) throws EmailExistsException {
 		if (userServiceImpl.emailExist(userDetails.getEmail())) {
-			
 			throw new EmailExistsException("There is an account with that email adress:" + userDetails.getEmail());
-			
+
 		} else {
 			User user = new User();
 			user.setEmail(userDetails.getEmail());
@@ -35,5 +35,10 @@ public class UserController {
 
 			return userServiceImpl.add(user);
 		}
+	}
+	@GetMapping("/home")
+	public String home()
+	{
+		return "Welcome";
 	}
 }

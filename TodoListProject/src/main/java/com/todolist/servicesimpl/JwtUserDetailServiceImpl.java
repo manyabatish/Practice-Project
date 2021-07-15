@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import com.todolist.services.JwtUserDetailService;
 import com.todolist.services.UserService;
 
-
 @Service
 public class JwtUserDetailServiceImpl implements UserDetailsService, JwtUserDetailService {
 	

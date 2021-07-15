@@ -10,7 +10,5 @@ import com.todolist.models.Task;
 @Repository
 public interface TaskDao extends JpaRepository<Task, Integer> {
 
-	List<?> findByUsername(String username);
-	
-
+	List<Task> findByUsername(String username);
 }

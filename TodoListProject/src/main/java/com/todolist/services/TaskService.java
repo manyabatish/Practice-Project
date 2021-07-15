@@ -1,5 +1,7 @@
 package com.todolist.services;
 
+import java.util.List;
+
 import com.todolist.models.Task;
 
 public interface TaskService {
@@ -12,5 +14,5 @@ public interface TaskService {
 
 	public void delete(Integer id);
 	
-
+	List<?> findByUsername(String username);
 }

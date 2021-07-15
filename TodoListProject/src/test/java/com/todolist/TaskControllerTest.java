@@ -19,7 +19,7 @@ import com.todolist.servicesimpl.TaskServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class TodoListProjectApplicationTests {
+public class TaskControllerTest {
 
 	@Autowired
 	TaskServiceImpl taskServiceImpl;
@@ -33,11 +33,24 @@ class TodoListProjectApplicationTests {
 	Task RECORD_4 = new Task(4, "Task4", "2021-11-12", 2, "user2@gmail.com");
 	
 	@Test
-	public void getTasksTest()
+	public void addTaskTestSuccess()
+	{
+		when(taskDao.save(RECORD_1)).thenReturn(RECORD_1);
+		assertEquals(RECORD_1 , taskServiceImpl.add(RECORD_1));
+	}
+	
+	@Test
+	public void getTaskByUserTestSuccess()
+	{
+		when(taskDao.findByUsername("user1@gmail.com")).thenReturn(Stream.of(RECORD_1 , RECORD_2).collect(Collectors.toList()));
+		assertEquals(2, taskServiceImpl.findByUsername("user1@gmail.com").size());
+	}
+	
+	@Test
+	public void getTasksTestSuccess()
 	{
 		when(taskDao.findAll()).thenReturn( Stream.of(RECORD_1 , RECORD_2, RECORD_3, RECORD_4).collect(Collectors.toList()));
 		assertEquals(4, taskServiceImpl.getTasks().size());
 	}
-	
 
 }
