@@ -11,4 +11,5 @@ import com.todolist.models.Task;
 public interface TaskDao extends JpaRepository<Task, Integer> {
 
 	List<Task> findByUsername(String username);
+	List<Task> findAllById(int id);
 }

@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.todolist.constants.SwaggerConstants;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -31,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Override
 	@Bean
 	public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -41,10 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-		httpSecurity.cors().and().csrf().disable().authorizeRequests().antMatchers("/authenticate","/signUp").permitAll()
-//				.antMatchers(SwaggerConstants.AUTH_WHITELIST).permitAll()
-				.anyRequest().authenticated().and().exceptionHandling().and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		httpSecurity.cors().and().csrf().disable().authorizeRequests().antMatchers("/authenticate", "/signUp")
+				.permitAll().antMatchers(SwaggerConstants.AUTH_WHITELIST).permitAll().anyRequest().authenticated().and()
+				.exceptionHandling().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
 	}
