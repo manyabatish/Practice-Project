@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 
 import com.todolist.dao.TaskDao;
 import com.todolist.dao.UserDao;
@@ -13,6 +14,7 @@ import com.todolist.models.Task;
 import com.todolist.models.User;
 import com.todolist.services.EmailService;
 
+@Service
 public class EmailServiceImpl implements EmailService {
 
 	@Autowired
@@ -28,7 +30,7 @@ public class EmailServiceImpl implements EmailService {
 	public boolean runScheduler() {
 		List<User> userEntities = userDao.findAll();
 		for (User user : userEntities) {
-			List<Task> taskEntities = taskDao.findAllById(user.getId());
+			List<Task> taskEntities = taskDao.findByUsername(user.getEmail());
 			int count = 1;
 			StringBuilder sb = new StringBuilder(
 					String.format("%-5s | %-20s | %-10s | %-2s | %n", "S.No.", "Task Name", "Due Date", "P."));
@@ -51,7 +53,7 @@ public class EmailServiceImpl implements EmailService {
 		if (toEmail != null && body != null && subject != null) {
 			SimpleMailMessage message = new SimpleMailMessage();
 			message.setTo(toEmail);
-			message.setFrom("nagarrotravelportalsystem@gmail.com");
+			message.setFrom("silkchannel2@gmail.com");
 			message.setSubject(subject);
 			message.setText(body);
 			mailSender.send(message);
