@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,10 +25,21 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int taskId;
+	
+	@NotBlank(message = "Name cannot be blank!")
+	@NotNull(message = "Name can't be null!")
 	private String name;
+	
+	@NotBlank(message = "Due date cannot be blank!")
+	@NotNull(message = "Due date can't be null!")
 	private String dueDate;
+	
+	@Positive(message = "Enter positive numbers only!")
+	@NotBlank(message = "Priority cannot be blank!")
+	@NotNull(message = "Priority can't be null!")
 	private int priority;
-	private String username ;
+	
+	private String username;
 
 	}
 	

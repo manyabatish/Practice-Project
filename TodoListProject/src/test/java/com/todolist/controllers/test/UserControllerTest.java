@@ -17,7 +17,7 @@ import com.todolist.servicesimpl.UserServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserControllerTest {
+class UserControllerTest {
 
 	@Autowired
 	UserServiceImpl userServiceImpl;
@@ -28,17 +28,5 @@ public class UserControllerTest {
 	User USER_1 = new User(1, "first123@gmail.com", "first", "last", "password");
 	User USER_2 = new User(2, "second123@gmail.com", "first", "last", "password");
 
-	@Test
-	public void addUserTest_success() {
-		when(userDao.save(USER_1)).thenReturn(USER_1);
-		assertEquals(userServiceImpl.add(USER_1), USER_1);
-
-	}
-
-	@Test
-	public void addUserTest_fails() {
-		when(userDao.save(USER_1)).thenReturn(USER_1);
-		assertNotEquals(USER_2, userServiceImpl.add(USER_1));
-
-	}
+	
 }

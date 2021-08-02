@@ -2,6 +2,7 @@ package com.todolist.services;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.todolist.models.Task;
@@ -9,13 +10,44 @@ import com.todolist.models.Task;
 @Service
 public interface TaskService {
 
-	public Task add(Task task);
+	/**
+	 * Create task for User
+	 *
+	 * @param task
+	 * @return Task
+	 */
+	public Task addTask(Task task);
 
-	public Task getById(Integer id);
+	/**
+	 * Get User Task by id
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Task getTaskById(Integer id);
 
-	public Task edit(Task task);
+	/**
+	 * Modify existing User Task
+	 * 
+	 * @param task
+	 * @return
+	 */
+	public Task editTask(Task task);
 
-	public void delete(Integer id);
+	/**
+	 * Delete User Task by id
+	 * 
+	 * @param id
+	 */
+	public void deleteTask(Integer id);
 	
-	List<?> findByUsername(String username);
+	/**
+	 * Get Tasks by logged in User
+	 * 
+	 * @param username
+	 * @return
+	 */
+	List<Task> findByUsername(String username);
+
+	List<Task> getTasks();
 }

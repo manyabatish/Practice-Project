@@ -2,9 +2,12 @@ package com.todolist.security.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 public class AuthenticationRequest implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@NotNull(message = "Username can't be null")
 	private String username;
     private String password;
 

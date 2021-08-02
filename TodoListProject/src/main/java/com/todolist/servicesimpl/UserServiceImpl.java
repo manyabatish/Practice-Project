@@ -14,7 +14,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public User add(User user) {
+	@Override
+	public User addUser(User user) {
 		return userDao.save(user);
 	}
 
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByEmail(email);
 	}
 
+	@Override
 	public boolean emailExist(String email) {
 		if (userDao.getUserByEmail(email) != null)
 			return true;
