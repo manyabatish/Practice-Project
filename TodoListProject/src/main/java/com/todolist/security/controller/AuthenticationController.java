@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.todolist.models.Task;
 import com.todolist.models.User;
 import com.todolist.security.JwtUtil;
 import com.todolist.security.model.AuthenticationRequest;
@@ -25,6 +24,12 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+/**
+ * Controller class for user authentication.
+ * 
+ * @author manyabatish
+ *
+ */
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -61,6 +66,11 @@ public class AuthenticationController {
 		return ResponseEntity.ok(new AuthenticationResponse(token));
 	}
 
+	/**
+	 * @param username
+	 * @param password
+	 * @throws Exception
+	 */
 	private void authenticate(String username, String password) throws Exception {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));

@@ -16,6 +16,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.todolist.constants.SwaggerConstants;
 import com.todolist.security.JwtRequestFilter;
 
+/**
+ * Configuration class for security.
+ * 
+ * @author manyabatish
+ *
+ */
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 

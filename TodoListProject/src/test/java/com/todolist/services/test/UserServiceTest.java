@@ -1,4 +1,4 @@
-package com.todolist.controllers.test;
+package com.todolist.services.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -12,15 +12,16 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.todolist.dao.UserDao;
+import com.todolist.exceptions.ServicesException;
 import com.todolist.models.User;
-import com.todolist.servicesimpl.UserServiceImpl;
+import com.todolist.services.UserService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class UserControllerTest {
+class UserServiceTest {
 
 	@Autowired
-	UserServiceImpl userServiceImpl;
+	UserService userService;
 
 	@MockBean
 	UserDao userDao;
@@ -28,5 +29,17 @@ class UserControllerTest {
 	User USER_1 = new User(1, "first123@gmail.com", "first", "last", "password");
 	User USER_2 = new User(2, "second123@gmail.com", "first", "last", "password");
 
-	
+	@Test
+	public void addUserTest_success() throws ServicesException {
+		when(userDao.save(USER_1)).thenReturn(USER_1);
+		assertEquals(userService.addUser(USER_1), USER_1);
+
+	}
+
+	@Test
+	public void addUserTest_fails() throws ServicesException {
+		when(userDao.save(USER_1)).thenReturn(USER_1);
+		assertNotEquals(USER_2, userService.addUser(USER_1));
+
+	}
 }

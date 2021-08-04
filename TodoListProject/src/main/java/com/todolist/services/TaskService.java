@@ -2,9 +2,10 @@ package com.todolist.services;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.todolist.exceptions.EmailExistsException;
+import com.todolist.exceptions.ServicesException;
 import com.todolist.models.Task;
 
 @Service
@@ -15,6 +16,7 @@ public interface TaskService {
 	 *
 	 * @param task
 	 * @return Task
+	 * @throws EmailExistsException
 	 */
 	public Task addTask(Task task);
 
@@ -23,6 +25,8 @@ public interface TaskService {
 	 * 
 	 * @param id
 	 * @return
+	 * @throws TaskNotFoundException
+	 * @throws ServicesException
 	 */
 	public Task getTaskById(Integer id);
 
@@ -31,6 +35,7 @@ public interface TaskService {
 	 * 
 	 * @param task
 	 * @return
+	 * @throws ServicesException
 	 */
 	public Task editTask(Task task);
 
@@ -38,16 +43,18 @@ public interface TaskService {
 	 * Delete User Task by id
 	 * 
 	 * @param id
+	 * @throws ServicesException
 	 */
 	public void deleteTask(Integer id);
-	
+
 	/**
 	 * Get Tasks by logged in User
 	 * 
 	 * @param username
 	 * @return
+	 * @throws ServicesException
 	 */
 	List<Task> findByUsername(String username);
 
-	List<Task> getTasks();
+	List<Task> getTasks() throws ServicesException;
 }

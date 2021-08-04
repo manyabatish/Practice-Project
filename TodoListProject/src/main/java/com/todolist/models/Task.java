@@ -35,8 +35,6 @@ public class Task {
 	private String dueDate;
 	
 	@Positive(message = "Enter positive numbers only!")
-	@NotBlank(message = "Priority cannot be blank!")
-	@NotNull(message = "Priority can't be null!")
 	private int priority;
 	
 	private String username;

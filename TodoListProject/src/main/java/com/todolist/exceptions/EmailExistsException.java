@@ -1,6 +1,6 @@
 package com.todolist.exceptions;
 
-public class EmailExistsException extends Exception {
+public class EmailExistsException extends RuntimeException {
 
 	/**
 	 * 

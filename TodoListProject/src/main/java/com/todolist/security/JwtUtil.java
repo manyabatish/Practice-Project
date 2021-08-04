@@ -12,6 +12,12 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+/**
+ * Utility class for jwt token.
+ * 
+ * @author manyabatish
+ *
+ */
 @Service
 public class JwtUtil {
 

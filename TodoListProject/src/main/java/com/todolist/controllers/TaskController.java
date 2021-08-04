@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * Controller class for task
+ * Controller class for task.
  * 
  * @author manyabatish
  * 
@@ -78,10 +78,10 @@ public class TaskController {
 	}
 
 	/**
-	 * Get Task by task id
+	 * Get Task by task id.
 	 * 
 	 * @param id
-	 * @return fetched task by id
+	 * @return Task
 	 */
 	@ApiOperation(value = "Getting Task for  User", tags = { "Task" })
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "User Task fetched successfully", response = Task.class),
@@ -92,10 +92,10 @@ public class TaskController {
 	}
 
 	/**
-	 * Get all tasks of logged in user
+	 * Get all tasks of logged in user.
 	 * 
 	 * @param authentication
-	 * @return tasks present under logged in user
+	 * @return List of Task
 	 */
 	@ApiOperation(value = "Fetching Task for logged in User", tags = { "Task" })
 	@ApiResponses(value = {
@@ -107,9 +107,9 @@ public class TaskController {
 	}
 
 	/**
-	 * Get all tasks present in database
+	 * Get all tasks present in database.
 	 * 
-	 * @return all tasks present in DB
+	 * @return List of Task
 	 */
 	@ApiOperation(value = "Getting all tasks present in database", tags = { "Task" })
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Tasks Fetched successfully", response = Task.class),

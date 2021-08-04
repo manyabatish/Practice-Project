@@ -20,10 +20,17 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Configuration class for swagger.
+ * 
+ * @author manyabatish
+ *
+ */
 @EnableSwagger2
 @Configuration
 public class SwaggerConfig {
 
+	
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())

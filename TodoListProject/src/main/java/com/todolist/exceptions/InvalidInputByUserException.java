@@ -23,5 +23,15 @@ public class InvalidInputByUserException {
 		});
 		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(errors);
 	}
+	
+	@ExceptionHandler(ServicesException.class)
+    public ResponseEntity<Object> noContentResponse(ServicesException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(exception.getMessage());
+    }
+	
+	@ExceptionHandler(EmailExistsException.class)
+    public ResponseEntity<Object> noContentResponse(EmailExistsException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(exception.getMessage());
+    }
 
 }
